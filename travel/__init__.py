@@ -13,11 +13,15 @@ def create_app():
 
     # ORM 적용
     db.init_app(app)
-    migrate.init_app(app, db)
+    if app.config['SQLALCHEMY_DATABASE_URI'].startswith('sqlite'):
+        migrate.init_app(app, db, render_as_batch=True)
+    else:
+        migrate.init_app(app, db)
+    from . import models
 
     # 블루 프린트 등록
-    from .views import main_views
+    from .views import main_views, auth_views
     app.register_blueprint(main_views.bp)
-    from . import models
+    app.register_blueprint(auth_views.bp)
 
     return app
