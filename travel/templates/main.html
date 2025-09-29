@@ -1,10 +1,149 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'base.html' %}
+{% block content %}
+<!-- 헤더  -->
+<header>
+    <div class="container">
+        <div class="header_mini">
+            <!-- 로고  -->
+            <div class="logo">
+                <a href="#"><img src="" alt="6Way"></a>
+            </div>
+            <!-- 마이페이지  -->
+            <div class="mypage">
+                <ul>
+                    <li><a href="#">회원가입</a></li>
+                    <li><a href="#">로그인</a></li>
+                    <li><a href="#">마이페이지</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</header>
 
-</body>
-</html>
+<hr>
+
+<!-- 슬라이더 들어갈 부분-->
+<div class="A">
+    <div class="B"></div>
+</div>
+
+<!-- 여행지 추천 1 -->
+<div class="C">
+    <div class="D"></div>
+</div>
+<div class="E">
+    <div class="F"></div>
+    <div class="G"></div>
+</div>
+
+<!-- 이런곳은 어떠신가요?(글 문구) -->
+<div class="H">
+    <div class="I"></div>
+    <div class="J"></div>
+</div>
+
+<!-- 계절여행지추천 1 -->
+<div class="container_box">
+    <div class="container">
+        <div class="banner">
+            <div class="banner_box">
+                <img src="../static/img/box2.jpg" alt="가을박스">
+            </div>
+            <div class="banner_text">      
+                <h2>이 계절<br>가장 빛나는<br>가을 여행지</h2>
+            </div>  
+        </div>
+    
+        <div class="card_box">  
+            <div class="card">
+                <img src="../static/img/travel1.jpg" alt="경주">
+                <div class="card_text">
+                    <h3>경북 경주 핑크 뮬리밭</h3>
+                    <p>#국내여행 #sns핫플 #인생샷</p>
+                    <span>
+                    <i class="fa-regular fa-heart like-btn" onclick="toggleLike(this)"></i>
+                    </span>
+                </div>
+            </div> 
+            <div class="card">
+                <img src="../static/img/tralvel2.jpg" alt="영주">
+                <div class="card_text">
+                    <h3>경상북도 영주 부석사</h3>
+                    <p>#전통한옥 #sns핫플 #가을여행</p>
+                    <span>
+                    <i class="fa-regular fa-heart like-btn" onclick="toggleLike(this)"></i>
+                    </span>
+                </div>
+            </div>
+            <div class="card">
+                <img src="../static/img/용비지2.jpg" alt="용비지">
+                <div class="card_text">
+                    <h3>충남 서산 용비지</h3>
+                    <P>#서산 가볼만한 곳 #서산용유지 #한국의스위스</P>
+                    <span>
+                    <i class="fa-regular fa-heart like-btn" onclick="toggleLike(this)"></i>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 계절여행지추천 2 -->
+<div class="container_box2">
+    <div class="container2">
+        <div class="banner2">
+            <div class="banner_box2">
+                <img src="../static/img/box.jpg" alt="여름박스">
+            </div>
+            <div  class="banner_text2">      
+                <h2>이 계절<br>가장 빛나는<br>여름 여행지</h2>
+            </div>  
+        </div>
+    
+        <div class="card_box2">  
+            <div class="card2">
+                <img src="../static/img/summer1.jpg" alt="부산">
+                <div class="card_text2">
+                    <h3>부산 해운대 블루라인파크</h3>
+                    <p>#추천여행 #여름 #휴가 #바다여행</p>
+                    <span>
+                    <i class="fa-regular fa-heart like-btn" onclick="toggleLike(this)"></i>
+                    </span>
+                </div>
+            </div> 
+            <div class="card2">
+                <img src="../static/img/summer2.jpg" alt="속초">
+                <div class="card_text2">
+                    <h3>강원도 속초 BEACH</h3>
+                    <p>#당일치기여행 #가족여행 #데이트코스</p>
+                    <span>
+                    <i class="fa-regular fa-heart like-btn" onclick="toggleLike(this)"></i>
+                    </span>
+                </div>
+            </div>
+            <div class="card2">
+                <img src="../static/img/summer.jpg" alt="단양">
+                <div class="card_text2">
+                    <h3>단양 패러글라이딩</h3>
+                    <P>#단양 여행코스 #가볼만한곳 #단양축제</P>
+                    <span>
+                    <i class="fa-regular fa-heart like-btn" onclick="toggleLike(this)"></i>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--게시판-->
+<div class="N">
+    <div class="M"></div>
+</div>
+
+<!-- 풋터 -->
+<hr>
+<footer class="footer">
+
+</footer>
+{% endblock %}
