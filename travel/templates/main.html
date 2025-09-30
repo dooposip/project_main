@@ -1,8 +1,17 @@
 {% extends 'base.html' %}
+
+{% block css %}
+<!-- 슬라이더 cdn -->
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+{% endblock %}
+
 {% block content %}
-<!-- 헤더  -->
+
+<!-- 헤더 -->
 <header>
-    <div class="container">
+    <div class="header">
         <div class="header_mini">
             <!-- 로고  -->
             <div class="logo">
@@ -11,8 +20,8 @@
             <!-- 마이페이지  -->
             <div class="mypage">
                 <ul>
-                    <li><a href="#">회원가입</a></li>
-                    <li><a href="#">로그인</a></li>
+                    <li><a href="{{ url_for('auth.signup') }}">회원가입</a></li>
+                    <li><a href="{{ url_for('auth.login') }}">로그인</a></li>
                     <li><a href="#">마이페이지</a></li>
                 </ul>
             </div>
@@ -23,8 +32,28 @@
 <hr>
 
 <!-- 슬라이더 들어갈 부분-->
-<div class="A">
-    <div class="B"></div>
+<div id="slider">
+    <div class="swiper mySwiper">
+        <div class="swiper-wrapper">
+        <div class="swiper-slide">
+            <img src="../static/img/slider1.png"  alt="slide1">
+        </div>
+        <div class="swiper-slide">
+            <img src="../static/img/slider2.png"  alt="slide1">
+        </div>
+        <div class="swiper-slide">
+            <img src="../static/img/slider3.png"  alt="slide1">
+        </div>
+        </div>
+        <div class="slide_button">
+            <div id="buttonRight">
+                <i class="fa-solid fa-chevron-up"></i>
+            </div>
+            <div id="buttonLeft">
+                <i class="fa-solid fa-chevron-down"></i>
+            </div>
+        </div>
+    </div>
 </div>
 
 <!-- 여행지 추천 1 -->
@@ -46,17 +75,15 @@
 <div class="container_box">
     <div class="container">
         <div class="banner">
-            <div class="banner_box">
-                <img src="../static/img/box2.jpg" alt="가을박스">
-            </div>
-            <div class="banner_text">      
+            <img class="banner_box" src="../static/img/box2.jpg" alt="가을박스">
+            <div class="banner_text">
                 <h2>이 계절<br>가장 빛나는<br>가을 여행지</h2>
-            </div>  
+            </div>
         </div>
-    
-        <div class="card_box">  
+
+        <div class="card_box">
             <div class="card">
-                <img src="../static/img/travel1.jpg" alt="경주">
+                <a href="{{ url_for('sub.detail') }}"><img src="../static/img/travel1.jpg" alt="경주"></a>
                 <div class="card_text">
                     <h3>경북 경주 핑크 뮬리밭</h3>
                     <p>#국내여행 #sns핫플 #인생샷</p>
@@ -64,9 +91,11 @@
                     <i class="fa-regular fa-heart like-btn" onclick="toggleLike(this)"></i>
                     </span>
                 </div>
-            </div> 
+            </div>
             <div class="card">
-                <img src="../static/img/tralvel2.jpg" alt="영주">
+                <a href="{{ url_for('sub.detail') }}">
+                    <img src="../static/img/tralvel2.jpg" alt="영주">
+                </a>
                 <div class="card_text">
                     <h3>경상북도 영주 부석사</h3>
                     <p>#전통한옥 #sns핫플 #가을여행</p>
@@ -76,7 +105,9 @@
                 </div>
             </div>
             <div class="card">
-                <img src="../static/img/용비지2.jpg" alt="용비지">
+                <a href="{{ url_for('sub.detail') }}">
+                    <img src="../static/img/용비지2.jpg" alt="용비지">
+                </a>
                 <div class="card_text">
                     <h3>충남 서산 용비지</h3>
                     <P>#서산 가볼만한 곳 #서산용유지 #한국의스위스</P>
@@ -89,21 +120,15 @@
     </div>
 </div>
 
+
 <!-- 계절여행지추천 2 -->
 <div class="container_box2">
     <div class="container2">
-        <div class="banner2">
-            <div class="banner_box2">
-                <img src="../static/img/box.jpg" alt="여름박스">
-            </div>
-            <div  class="banner_text2">      
-                <h2>이 계절<br>가장 빛나는<br>여름 여행지</h2>
-            </div>  
-        </div>
-    
-        <div class="card_box2">  
+        <div class="card_box2">
             <div class="card2">
-                <img src="../static/img/summer1.jpg" alt="부산">
+                <a href="{{ url_for('sub.detail') }}">
+                    <img src="../static/img/summer1.jpg" alt="부산">
+                </a>
                 <div class="card_text2">
                     <h3>부산 해운대 블루라인파크</h3>
                     <p>#추천여행 #여름 #휴가 #바다여행</p>
@@ -111,9 +136,11 @@
                     <i class="fa-regular fa-heart like-btn" onclick="toggleLike(this)"></i>
                     </span>
                 </div>
-            </div> 
+            </div>
             <div class="card2">
-                <img src="../static/img/summer2.jpg" alt="속초">
+                <a href="{{ url_for('sub.detail') }}">
+                    <img src="../static/img/summer2.jpg" alt="속초">
+                </a>
                 <div class="card_text2">
                     <h3>강원도 속초 BEACH</h3>
                     <p>#당일치기여행 #가족여행 #데이트코스</p>
@@ -123,7 +150,9 @@
                 </div>
             </div>
             <div class="card2">
-                <img src="../static/img/summer.jpg" alt="단양">
+                <a href="{{ url_for('sub.detail') }}">
+                    <img src="../static/img/summer.jpg" alt="단양">
+                </a>
                 <div class="card_text2">
                     <h3>단양 패러글라이딩</h3>
                     <P>#단양 여행코스 #가볼만한곳 #단양축제</P>
@@ -134,6 +163,12 @@
             </div>
         </div>
     </div>
+    <div class="banner2">
+        <img class="banner_box2" src="../static/img/box.jpg" alt="여름박스">
+        <div class="banner_text2">
+            <h2>이 계절<br>가장 빛나는<br>여름 여행지</h2>
+        </div>
+    </div>
 </div>
 
 <!--게시판-->
@@ -141,9 +176,17 @@
     <div class="M"></div>
 </div>
 
-<!-- 풋터 -->
-<hr>
-<footer class="footer">
-
+<!-- footer -->
+<footer>
+    
 </footer>
+{% endblock %}
+
+{% block script %}
+<!-- slider -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<!--아이콘 cdn-->
+<script src="https://kit.fontawesome.com/27fd60e7f1.js" crossorigin="anonymous"></script>
+<!--여행지 추천 JS-->
+<script src="{{ url_for('static', filename='main.js') }}"></script>
 {% endblock %}

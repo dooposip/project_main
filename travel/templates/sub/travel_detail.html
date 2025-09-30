@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/travel_detail.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="SUB-container">
+    <div class="SUB-box">
+        <img src="./img/sub.jpg" alt="상세사진">
+    </div>
+    <div class="text">
+        <h2>단양</h2>
+        <P>“심장이 두근거리는 짜릿한 순간! 하늘을 나는 기분을 온몸으로 느낄 수 있는 패러글라이딩 체험. 단양에서만 만날 수 있는 특별한 스릴과 환상적인 뷰를 동시에 즐겨보세요. 비행 영상 촬영 옵션까지 더하면 평생 간직할 추억이 됩니다.”</P>
+    </div>
+    <button>맛집추천</button>
+    <button>여행코스</button>
+</div>
+{% endblock %}

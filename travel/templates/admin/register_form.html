@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+
+{% block css %}
+<!--bootstrap cdn-->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
+{% endblock %}
+
+{% block content %}
+<!-- 추천 여행지 등록 -->
+<div class="container">
+    <h5 class="my-3 border-bottom pb-2">추천 여행지 등록</h5>
+    <form method="post" class="my-3" enctype="multipart/form-data">
+    <!--enctype="multipart/form-data" : 파일을 업로드하기 위해서는 반드시 필요한 내용-->
+        {{ form.csrf_token }}
+        {% include 'form_errors.html' %}
+        <div class="mb-3">
+            <label for="image">이미지 첨부</label>
+            <input type="file" name="image" id="image" class="form-control">
+        </div>
+        <div class="mb-3">
+            <label for="place">관광지명</label>
+            <input type="text" name="place" id="place" class="form-control" value="{{ form.place.data or '' }}">
+        </div>
+        <div class="mb-3">
+            <label for="location">지역</label>
+            <input type="text" name="location" id="location" class="form-control" value="{{ form.location.data or '' }}">
+        </div>
+        <div class="mb-3">
+            <label>계절 선택:</label><br>
+            <button type="button" class="season-btn" data-value="봄">봄</button>
+            <button type="button" class="season-btn" data-value="여름">여름</button>
+            <button type="button" class="season-btn" data-value="가을">가을</button>
+            <button type="button" class="season-btn" data-value="겨울">겨울</button>
+
+            <!-- 선택된 계절들을 담는 hidden input -->
+            <input type="hidden" name="season" id="season-input">
+        </div>
+        <div class="mb-3">
+            <label for="content">설명</label>
+            <textarea name="content" id="content" rows="5" class="form-control"> {{ form.content.data or '' }}</textarea>
+        </div>
+        <button type="submit" class="btn btn-dark">저장하기</button>
+    </form>
+
+</div>
+
+<style>
+/* 계절선택 버튼 */
+    .season-btn.selected {
+        background-color: #4CAF50;
+        color: white;
+    }
+</style>
+{% endblock %}
+
+
+{% block script %}
+<!--Bootstrap js cdn-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+<!--관리자 관련 JS-->
+<script src="{{ url_for('static', filename='admin.js') }}"></script>
+{% endblock %}
+
+<!-- 추후 특정 계절이 포함된 내용을 찾으려면 -->
+<!-- 
+spring_tours = Tour.query.filter(Tour.season.contains("봄")).all() 
+-->
