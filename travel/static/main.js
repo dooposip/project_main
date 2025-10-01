@@ -1,10 +1,14 @@
 //슬라이더
 var swiper = new Swiper(".mySwiper", {
   loop:true,
-    navigation: {
-      nextEl: "#buttonRight",
-      prevEl: "#buttonLeft",
-    },
+  autoplay: {
+      delay: 3000,
+      disableOnInteraction: false,
+  },
+  navigation: {
+    nextEl: "#buttonRight",
+    prevEl: "#buttonLeft",
+  },
 });
 
 // 계절여행지 추천 하트 채우기/비우기
