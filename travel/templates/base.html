@@ -4,11 +4,43 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Travel</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/headfoot.css') }}">
     {% block css %}
     {% endblock %}
 </head>
 <body>
 
+    <!-- 헤더 -->
+    <header>
+        <div class="header_mini"> 
+            <!-- 로고  -->
+            <div class="logo">
+                <a href="{{ url_for('main.index') }}"><img src="{{ url_for('static', filename='img/logo.png') }}" alt="6way"></img></a>
+            </div>
+            <!-- 마이페이지  -->
+            <div class="mypage">
+                <ul>
+                    {% if g.user %}
+                        {% if g.user.id == 1%}
+                            <li>{{ g.user.username }}</li>
+                            <li><a href="{{ url_for('admin.create') }}">여행지 등록</a></li>
+                            <li><a href="#">마이페이지</a></li>
+                            <li><a href="{{ url_for('auth.logout') }}">로그아웃</a></li>
+                        {% else %}
+                            <li>{{ g.user.username }}</li>
+                            <li><a href="#">마이페이지</a></li>
+                            <li><a href="{{ url_for('auth.logout') }}">로그아웃</a></li>
+                        {% endif %}
+                    {% else %}
+                        <li><a href="{{ url_for('auth.signup') }}">회원가입</a></li>
+                        <li><a href="{{ url_for('auth.login') }}">로그인</a></li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <hr>
 
     <!--기본 템플릿 안에 삽입될 내용 start-->
     {% block content %}
@@ -17,8 +49,37 @@
 
 
 
+    <!-- footer -->
+    <footer class="footer">
+        <div class="footer_inner">
+            <!-- 로고/사이트명 -->
+            <div class="footer_logo">
+                <img src="{{ url_for('static', filename='img/logo.png') }}" alt="6way">
+            </div>
+
+            <!-- 메뉴 링크 -->
+            <ul class="footer_menu">
+            <li><a href="#">회사소개</a></li>
+            <li><a href="#">이용약관</a></li>
+            <li><a href="#">개인정보처리방침</a></li>
+            <li><a href="#">고객센터</a></li>
+            </ul>
+
+            <!-- 연락처/고객센터 -->
+            <div class="footer_info">
+            <p>고객센터: 1234-5678</p>
+            <p>Email: 6qlxm@6qlxm.com</p>
+            <p>주소: 서울특별시 어딘가 123</p>
+            </div>
+
+            <!-- 저작권 -->
+            <div class="footer_copy">
+            <p>© 2025 6way. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
     {% block script %}
     {% endblock %}
-
 </body>
 </html>

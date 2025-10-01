@@ -1,4 +1,4 @@
-from flask import Blueprint, session, url_for, request, redirect, render_template, flash
+from flask import Blueprint, g, session, url_for, request, redirect, render_template, flash
 from werkzeug.security import generate_password_hash, check_password_hash
 
 from travel import db
@@ -50,3 +50,18 @@ def login():
         else:
             flash(errormsg)
     return render_template('auth/login.html', form=form)
+
+# 라우팅 함수보다 먼저 실행
+@bp.before_app_request
+def load_logged_in_user():
+    user_id = session.get('user_id')
+    if user_id is None:
+        g.user = None
+    else:
+        g.user = User.query.get(int(user_id))
+
+# 로그아웃
+@bp.route('/logout/')
+def logout():
+    session.clear()
+    return redirect(url_for('main.index'))

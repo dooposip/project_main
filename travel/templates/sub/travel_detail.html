@@ -5,15 +5,31 @@
 {% endblock %}
 
 {% block content %}
-<div class="SUB-container">
-    <div class="SUB-box">
-        <img src="./img/sub.jpg" alt="상세사진">
-    </div>
-    <div class="text">
-        <h2>단양</h2>
-        <P>“심장이 두근거리는 짜릿한 순간! 하늘을 나는 기분을 온몸으로 느낄 수 있는 패러글라이딩 체험. 단양에서만 만날 수 있는 특별한 스릴과 환상적인 뷰를 동시에 즐겨보세요. 비행 영상 촬영 옵션까지 더하면 평생 간직할 추억이 됩니다.”</P>
-    </div>
+<div class="title middle">
+    <!-- 여행지명 -->
+    <h1 class="place">단양 패러글라이딩</h1>
+
+    <!-- 지역 -->
+    <h1 class="location">단양</h1>
+</div>
+
+<!-- 여행지 사진 -->
+<div class="travel-img middle">
+    <img src="{{ url_for('static', filename='img/sub.jpg') }}" alt="상세사진">
+</div>
+
+<!-- 여행지 세부정보 -->
+<div class="travel-detail middle">
+    <h2>상세설명</h2>
+    <hr>
+    <!-- 여행지 설명 -->
+    <P class="travel-content">“심장이 두근거리는 짜릿한 순간! 하늘을 나는 기분을 온몸으로 느낄 수 있는 패러글라이딩 체험. 단양에서만 만날 수 있는 특별한 스릴과 환상적인 뷰를 동시에 즐겨보세요. 비행 영상 촬영 옵션까지 더하면 평생 간직할 추억이 됩니다.”</P>
     <button>맛집추천</button>
     <button>여행코스</button>
+</div>
+
+<!-- 리뷰 / 댓글 등록 -->
+<div class="review middle"> 
+    <h2>리뷰 / 댓글</h2>
 </div>
 {% endblock %}

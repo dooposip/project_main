@@ -2,47 +2,38 @@
 
 {% block css %}
 <!-- 슬라이더 cdn -->
-<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+<!-- 폰트 -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
 
+
+<!-- css/ -->
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 {% endblock %}
 
 {% block content %}
 
-<!-- 헤더 -->
-<header>
-    <div class="header">
-        <div class="header_mini">
-            <!-- 로고  -->
-            <div class="logo">
-                <a href="#"><img src="" alt="6Way"></a>
-            </div>
-            <!-- 마이페이지  -->
-            <div class="mypage">
-                <ul>
-                    <li><a href="{{ url_for('auth.signup') }}">회원가입</a></li>
-                    <li><a href="{{ url_for('auth.login') }}">로그인</a></li>
-                    <li><a href="#">마이페이지</a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
-</header>
-
-<hr>
 
 <!-- 슬라이더 들어갈 부분-->
 <div id="slider">
     <div class="swiper mySwiper">
         <div class="swiper-wrapper">
         <div class="swiper-slide">
-            <img src="../static/img/slider1.png"  alt="slide1">
+            <img src="../static/img/slide1.jpg"  alt="slide1">
         </div>
         <div class="swiper-slide">
-            <img src="../static/img/slider2.png"  alt="slide1">
+            <img src="../static/img/slide2.jpg"  alt="slide1">
         </div>
         <div class="swiper-slide">
-            <img src="../static/img/slider3.png"  alt="slide1">
+            <img src="../static/img/slide3.jpg"  alt="slide1">
+        </div>
+        <div class="swiper-slide">
+            <img src="../static/img/slide4.jpg"  alt="slide1">
+        </div>
+        <div class="swiper-slide">
+            <img src="../static/img/slide5.jpg"  alt="slide1">
         </div>
         </div>
         <div class="slide_button">
@@ -57,12 +48,25 @@
 </div>
 
 <!-- 여행지 추천 1 -->
-<div class="C">
-    <div class="D"></div>
+<div class="travel_box">
+            <span class="four_cut">
+                <img src="{{ url_for('static', filename='img/soul.jpg') }}" alt="서울">
+            </span>
+            <div class="txt_box">
+                <h2>SEOUL</h2>
+                <div class="sun"></div>
+                <p>찬란한 문화유산과 다채로운 도시의 매력이 어우러져 해마다 수많은<br> 관광객이 찾는 특별한 여행지, 서울</p>
+            </div>
 </div>
-<div class="E">
-    <div class="F"></div>
-    <div class="G"></div>
+<div class="travel_box">
+            <div class="txt_box">
+                <h2>JEJU</h2>
+                <div class="sun2"></div>
+                <p>아름다운 경관과 오염되지 않은 자연환경으로 해마다 수만 명의 관광객이<br> 찾아오는 관광지, 아름다운 섬 제주</p>
+            </div>
+            <span class="four_cut">
+                <img src="{{ url_for('static', filename='img/jeju.jpg') }}" alt="제주">
+            </span>
 </div>
 
 <!-- 이런곳은 어떠신가요?(글 문구) -->
@@ -176,10 +180,6 @@
     <div class="M"></div>
 </div>
 
-<!-- footer -->
-<footer>
-    
-</footer>
 {% endblock %}
 
 {% block script %}
@@ -187,6 +187,6 @@
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <!--아이콘 cdn-->
 <script src="https://kit.fontawesome.com/27fd60e7f1.js" crossorigin="anonymous"></script>
-<!--여행지 추천 JS-->
+<!--JS-->
 <script src="{{ url_for('static', filename='main.js') }}"></script>
 {% endblock %}
