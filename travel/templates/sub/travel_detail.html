@@ -5,31 +5,86 @@
 {% endblock %}
 
 {% block content %}
-<div class="title middle">
-    <!-- 여행지명 -->
-    <h1 class="place">단양 패러글라이딩</h1>
+{% if tour %}
+    <div class="title middle">
+        <!-- 여행지명 -->
+        <h1 class="place">{{tour.place}}</h1>
 
-    <!-- 지역 -->
-    <h1 class="location">단양</h1>
+        <!-- 지역 -->
+        <h1 class="location">{{tour.location}}</h1>
+    </div>
+
+    <!-- 여행지 사진 -->
+    <div class="travel-img middle">
+        <img src="{{ url_for('static', filename=tour.image_path) }}" alt="상세사진">
+    </div>
+
+    <!-- 여행지 세부정보 -->
+    <div class="travel-detail middle">
+        <h2>상세설명</h2>
+        <hr>
+        <!-- 여행지 설명 -->
+        <P class="travel-content">{{tour.content}}</P>
+        <button>맛집추천</button>
+        <button>여행코스</button>
+    </div>
+{% endif %}
+
+<!--리뷰등록-->
+<div class="Review_create middle">
+    <h2>리뷰</h2>
+    <form action="{{ url_for('review.create', tour_id=tour.id) }}" method="post">
+        {{ form.csrf_token }}
+        <textarea class="Revview_create_text" name="content" id="content" rows="5"
+        {% if not g.user %}disabled{% endif %} ></textarea>
+        <button type="submit"
+        {% if not g.user %}disabled{% endif %} >답변등록</button>
+    </form>
 </div>
 
-<!-- 여행지 사진 -->
-<div class="travel-img middle">
-    <img src="{{ url_for('static', filename='img/sub.jpg') }}" alt="상세사진">
+<!--리뷰목록-->
+<div class="Review_List">
+    <h3>{{ tour.review_set|length }}개의 리뷰가 있습니다.</h3>
+    {% for review in tour.review_set %}
+    <div class="Review">
+        <div class="Review_content_box">
+            <div style="width: 800px;">{{ review.content }}</div>
+            <div style="width: 130px;">
+                {% if review.modify_date %}
+                <div>
+                    <p>작성자 : {{ review.user.username  }}</p>
+                    <p><s>{{ review.create_date.strftime('%Y-%m-%d %H:%M') }}</s></p> 
+                    <p>{{ review.modify_date.strftime('%Y-%m-%d %H:%M') }}</p>
+                </div>
+                {% else %}
+                    <div>
+                        <p>작성자 : {{ review.user.username  }}</p>
+                        <p>{{ review.create_date.strftime('%Y-%m-%d %H:%M') }}</p>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+        <div class="Review_btnbox">
+            {% if g.user == review.user %}
+            <a class="Review_modify" href="{{ url_for('review.modify', review_id=review.id) }}">수정</a>
+            <button class="delete" data-uri="{{ url_for('review.delete', review_id=review.id) }}">삭제</button>
+            {% endif %}
+        </div>
+    </div>
+    {% endfor %}
 </div>
+{% endblock %}
 
-<!-- 여행지 세부정보 -->
-<div class="travel-detail middle">
-    <h2>상세설명</h2>
-    <hr>
-    <!-- 여행지 설명 -->
-    <P class="travel-content">“심장이 두근거리는 짜릿한 순간! 하늘을 나는 기분을 온몸으로 느낄 수 있는 패러글라이딩 체험. 단양에서만 만날 수 있는 특별한 스릴과 환상적인 뷰를 동시에 즐겨보세요. 비행 영상 촬영 옵션까지 더하면 평생 간직할 추억이 됩니다.”</P>
-    <button>맛집추천</button>
-    <button>여행코스</button>
-</div>
-
-<!-- 리뷰 / 댓글 등록 -->
-<div class="review middle"> 
-    <h2>리뷰 / 댓글</h2>
-</div>
+<!-- 리뷰 삭제버튼 활성화를 위한 비동기 처리 -->
+{% block script %}
+<script>
+    const delete_element = document.querySelectorAll('.delete');
+    delete_element.forEach(function(element){
+        element.addEventListener('click', function(){
+            if(confirm('정말로 삭제하시겠습니까?')){
+                location.href =  this.dataset.uri;
+            }
+        })
+    });
+</script>
 {% endblock %}

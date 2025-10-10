@@ -65,10 +65,10 @@ class Tour(db.Model):
 
 # 리뷰 모델 생성
 class Review(db.Model):
-    id = db.Column(db.Integer, primary_key=True, autoincrement=True)  # db에 생성된 순서로 부여되는 id
-    content = db.Column(db.Text(), nullable=False)  # 댓글 내용 / 필수입력
-    create_date = db.Column(db.DateTime(), nullable=False)  # 작성시간 / 자동생성
-    modify_date = db.Column(db.DateTime(), nullable=True)  # 수정시 수정시간 생성
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)      # db에 생성된 순서로 부여되는 id
+    content = db.Column(db.Text(), nullable=False)                        # 댓글 내용 / 필수입력
+    create_date = db.Column(db.DateTime(), nullable=False)                # 작성시간 / 자동생성
+    modify_date = db.Column(db.DateTime(), nullable=True)                 # 수정시 수정시간 생성
     # Review와 Tour를 상호 연결(참조)
     tour_id = db.Column(db.Integer, db.ForeignKey('tour.id', ondelete='CASCADE'))
     tour = db.relationship('Tour', backref=db.backref('review_set'))

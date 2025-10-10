@@ -11,6 +11,8 @@ class RegisterForm(FlaskForm):
     season= StringField('계절') 
     content=TextAreaField('내용', validators=[DataRequired("설명은 필수입력 항목입니다.")])
 
+class ReviewForm(FlaskForm):
+    content = TextAreaField('내용', validators=[DataRequired("내용은 필수입력 항목입니다.")])
 
 class UserCreateForm(FlaskForm):
     userid = StringField('ID', validators=[DataRequired(), Length(min=3, max=10)])

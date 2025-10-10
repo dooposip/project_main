@@ -50,7 +50,7 @@
 <!-- 여행지 추천 1 -->
 <div class="travel_box">
             <span class="four_cut">
-                <img src="{{ url_for('static', filename='img/soul.jpg') }}" alt="서울">
+                <img src="../static/img/soul.jpg" alt="서울">
             </span>
             <div class="txt_box">
                 <h2>SEOUL</h2>
@@ -65,14 +65,67 @@
                 <p>아름다운 경관과 오염되지 않은 자연환경으로 해마다 수만 명의 관광객이<br> 찾아오는 관광지, 아름다운 섬 제주</p>
             </div>
             <span class="four_cut">
-                <img src="{{ url_for('static', filename='img/jeju.jpg') }}" alt="제주">
+                <img src="../static/img/jeju.jpg" alt="제주">
             </span>
 </div>
 
-<!-- 이런곳은 어떠신가요?(글 문구) -->
-<div class="H">
-    <div class="I"></div>
-    <div class="J"></div>
+<!-- 여행지 추천 2 -->
+<div class="H2-slider">
+    <div class="H2-title">MD 추천코스</div>
+    <div class="H2-subtitle">내나라 구석구석~~^^</div>
+    <div class="section-wrapper2">
+        <div class="section2">
+            <div class="swiper swiper2">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <a href="#" class="slide-link">
+                            <img src="../static/img/mulnori.jpg" alt="물놀이">
+                            <span class="slide-text">물놀이</span>
+                        </a>
+                    </div>
+                    <div class="swiper-slide">
+                        <a href="#" class="slide-link">
+                            <img src="../static/img/hanok.jpg" alt="한옥">
+                            <span class="slide-text">한옥</span>
+                        </a>
+                    </div>
+                    <div class="swiper-slide">
+                        <a href="#" class="slide-link">
+                            <img src="../static/img/bulguksa.jpg" alt="경주">
+                            <span class="slide-text">경주</span>
+                        </a>
+                    </div>
+                    <div class="swiper-slide">
+                        <a href="#" class="slide-link">
+                            <img src="../static/img/yakyung.jpg" alt="야경">
+                            <span class="slide-text">야경</span>
+                        </a>
+                    </div>
+                    <div class="swiper-slide">
+                        <a href="#" class="slide-link">
+                            <img src="../static/img/meseum.jpg" alt="박물관">
+                            <span class="slide-text">박물관</span>
+                        </a>
+                    </div>
+                    <div class="swiper-slide">
+                        <a href="#" class="slide-link">
+                            <img src="../static/img/healing.jpg" alt="힐링">
+                            <span class="slide-text">힐링</span>
+                        </a>
+                    </div>
+                    <div class="swiper-slide">
+                        <a href="#" class="slide-link">
+                            <img src="../static/img/sanhecck.jpg" alt="산책">
+                            <span class="slide-text">산책</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 커스텀 버튼 -->
+        <div class="custom-prev2"><span>‹</span></div>
+        <div class="custom-next2"><span>›</span></div>
+    </div>
 </div>
 
 <!-- 계절여행지추천 1 -->
@@ -87,7 +140,7 @@
 
         <div class="card_box">
             <div class="card">
-                <a href="{{ url_for('sub.detail') }}"><img src="../static/img/travel1.jpg" alt="경주"></a>
+                <img src="../static/img/travel1.jpg" alt="경주">
                 <div class="card_text">
                     <h3>경북 경주 핑크 뮬리밭</h3>
                     <p>#국내여행 #sns핫플 #인생샷</p>
@@ -97,9 +150,7 @@
                 </div>
             </div>
             <div class="card">
-                <a href="{{ url_for('sub.detail') }}">
-                    <img src="../static/img/tralvel2.jpg" alt="영주">
-                </a>
+                <img src="../static/img/tralvel2.jpg" alt="영주">
                 <div class="card_text">
                     <h3>경상북도 영주 부석사</h3>
                     <p>#전통한옥 #sns핫플 #가을여행</p>
@@ -109,9 +160,7 @@
                 </div>
             </div>
             <div class="card">
-                <a href="{{ url_for('sub.detail') }}">
-                    <img src="../static/img/용비지2.jpg" alt="용비지">
-                </a>
+                <img src="../static/img/travel3.jpg" alt="용비지">
                 <div class="card_text">
                     <h3>충남 서산 용비지</h3>
                     <P>#서산 가볼만한 곳 #서산용유지 #한국의스위스</P>
@@ -124,15 +173,12 @@
     </div>
 </div>
 
-
 <!-- 계절여행지추천 2 -->
 <div class="container_box2">
     <div class="container2">
         <div class="card_box2">
             <div class="card2">
-                <a href="{{ url_for('sub.detail') }}">
-                    <img src="../static/img/summer1.jpg" alt="부산">
-                </a>
+                <img src="../static/img/summer1.jpg" alt="부산">
                 <div class="card_text2">
                     <h3>부산 해운대 블루라인파크</h3>
                     <p>#추천여행 #여름 #휴가 #바다여행</p>
@@ -142,9 +188,7 @@
                 </div>
             </div>
             <div class="card2">
-                <a href="{{ url_for('sub.detail') }}">
-                    <img src="../static/img/summer2.jpg" alt="속초">
-                </a>
+                <img src="../static/img/summer2.jpg" alt="속초">
                 <div class="card_text2">
                     <h3>강원도 속초 BEACH</h3>
                     <p>#당일치기여행 #가족여행 #데이트코스</p>
@@ -154,9 +198,7 @@
                 </div>
             </div>
             <div class="card2">
-                <a href="{{ url_for('sub.detail') }}">
-                    <img src="../static/img/summer.jpg" alt="단양">
-                </a>
+                <img src="../static/img/summer.jpg" alt="단양">
                 <div class="card_text2">
                     <h3>단양 패러글라이딩</h3>
                     <P>#단양 여행코스 #가볼만한곳 #단양축제</P>
@@ -175,11 +217,50 @@
     </div>
 </div>
 
+<!-- 여행지 목록 -->
+<div class="Tour_list">
+    <h2>여행지 목록</h2>
+    <table class="Tour_list_table">
+        <thead>
+            <tr class="Tour_list_tr">
+                <th class="Tour_table_id">번호</th>
+                <th class="Tour_table_img">이미지</th>
+                <th class="Tour_table_content">관광지명</th>
+                <th class="Tour_table_season">추천계절</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% if tour_list %}
+                {% for tour in tour_list%}
+                    <tr>
+                        <td>{{ tour.id }}</td>
+                        <td>
+                            <a href="{{url_for('sub.detail', tour_id=tour.id)}}">
+                                {% if tour.image_path %}
+                                    <img src="{{url_for('static', filename=tour.image_path)}}" alt="썸네일" style="width: 150px;">
+                                {% endif %}
+                            </a>
+                        </td>
+                        <td style="text-align: left;">
+                            <a href="{{url_for('sub.detail', tour_id=tour.id)}}">{{tour.place}}</a> 
+                            <br> {{tour.content}}
+                        </td>
+                        <td>{{tour.season}}</td>
+                    </tr>
+                {% endfor %}
+            {% else %}
+                <tr>
+                    <td colspan="3">여행지가 없습니다.</td>
+                </tr>
+            {% endif %}
+        </tbody>
+    </table>
+</div>
+
 <!--게시판-->
 <div class="N">
     <div class="M"></div>
 </div>
-
 {% endblock %}
 
 {% block script %}

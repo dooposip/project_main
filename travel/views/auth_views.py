@@ -1,3 +1,4 @@
+import functools
 from flask import Blueprint, g, session, url_for, request, redirect, render_template, flash
 from werkzeug.security import generate_password_hash, check_password_hash
 
@@ -65,3 +66,13 @@ def load_logged_in_user():
 def logout():
     session.clear()
     return redirect(url_for('main.index'))
+
+# 로그인 필요
+def login_required(view):
+    @functools.wraps(view)
+    def wrapped_view(*args, **kwargs):
+        if g.user is None:
+            _next = request.url if request.method == 'GET' else ''   # 현재 페이지(에러 발생 전 위치)를 기억하는 용도
+            return redirect(url_for('auth.login', next=_next))
+        return view(*args, **kwargs)
+    return wrapped_view
