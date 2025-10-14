@@ -10,3 +10,7 @@ def detail(tour_id):
     form = ReviewForm()
     tour = Tour.query.get_or_404(tour_id)
     return render_template('sub/travel_detail.html',tour=tour, form=form)
+
+@bp.route('/sub2')
+def sub2():
+    return render_template('sub/sub2.html')
