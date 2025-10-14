@@ -1,0 +1,133 @@
+{% extends 'base.html' %}
+
+{% block css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/sub2.css') }}">
+{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+<div class="container">
+    <div class="sub_header">
+        <h1>어디로 떠나시나요?</h1>
+        <p>대한민국의 아름다운 여행지를 탐험해보세요</p>
+        <div class="search-container">
+            <input type="text"
+                class="search-box" 
+                id="searchInput"
+                placeholder="여행지를 검색해보세요... (예: 서울, 부산, 바다)"
+                oninput="filterDestinations()"
+            >
+           <span class="search-icon"><i class="fa-solid fa-magnifying-glass"></i></span>
+        </div>
+    </div>
+
+    <div class="destinations-grid">
+        <div class="destination-card" data-city="서울" onclick="selectDestination('서울')">
+            <div class="card-image"><img src="https://t1.daumcdn.net/brunch/service/user/bBCf/image/FWbi-kBoq3s3qLShSlLRg0Tdjjc.jpg" alt="서울"></div>
+            <div class="card-content">
+                <h2 class="card-title">서울</h2>
+                <p class="card-description">전통과 현대가 공존하는 대한민국의 수도. 궁궐, 쇼핑, 맛집의 천국</p>
+                <div class="card-tags">
+                    <span class="tag">#도심여행</span>
+                    <span class="tag">#문화</span>
+                    <span class="tag">#쇼핑</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="destination-card" data-city="부산" onclick="selectDestination('부산')">
+            <div class="card-image"><img src="https://img.freepik.com/free-photo/gwangan-bridge-haeundae-busan-korea_335224-400.jpg" alt="부산"></div>
+            <div class="card-content">
+                <h2 class="card-title">부산</h2>
+                <p class="card-description">아름다운 해변과 신선한 해산물이 있는 항구 도시</p>
+                <div class="card-tags">
+                    <span class="tag">#바다</span>
+                    <span class="tag">#해변</span>
+                    <span class="tag">#해산물</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="destination-card" data-city="제주" onclick="selectDestination('제주도')">
+            <div class="card-image"><img src="https://mywebring.com/wp-content/uploads/2025/04/img-3.jpg" alt="제주도"></div>
+            <div class="card-content">
+                <h2 class="card-title">제주도</h2>
+                <p class="card-description">한국의 하와이, 아름다운 자연과 독특한 문화가 있는 섬</p>
+                <div class="card-tags">
+                    <span class="tag">#섬여행</span>
+                    <span class="tag">#자연</span>
+                    <span class="tag">#힐링</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="destination-card" data-city="경주" onclick="selectDestination('경주')">
+            <div class="card-image"><img src="https://media.triple.guide/triple-cms/c_limit,f_auto,h_1024,w_1024/115defee-c480-48b1-889c-4b990cb1cd9d.jpeg" alt="경주"></div>
+            <div class="card-content">
+                <h2 class="card-title">경주</h2>
+                <p class="card-description">천년 고도, 신라의 역사와 문화유산이 살아있는 도시</p>
+                <div class="card-tags">
+                    <span class="tag">#역사</span>
+                    <span class="tag">#문화재</span>
+                    <span class="tag">#고즈넉</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="destination-card" data-city="강릉" onclick="selectDestination('강릉')">
+            <div class="card-image"><img src="https://cdn.sanity.io/images/nxpteyfv/goguides/45f168b73675440339a4494f371ab5658879e4a2-1600x1067.jpg" alt="강릉"></div>
+            <div class="card-content">
+                <h2 class="card-title">강릉</h2>
+                <p class="card-description">동해안의 아름다운 해변과 커피 거리가 있는 낭만적인 도시</p>
+                <div class="card-tags">
+                    <span class="tag">#동해</span>
+                    <span class="tag">#카페</span>
+                    <span class="tag">#일출</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="destination-card" data-city="전주" onclick="selectDestination('전주')">
+            <div class="card-image"><img src="https://datacdn.ibtravel.co.kr/files/2023/07/14182701/7a71b5e26ca55d79b9d60abfdd88e2e5_img-1.jpeg" alt="전주"></div>
+            <div class="card-content">
+                <h2 class="card-title">전주</h2>
+                <p class="card-description">전통 한옥마을과 비빔밥의 고장, 미식가들의 성지</p>
+                <div class="card-tags">
+                    <span class="tag">#한옥</span>
+                    <span class="tag">#맛집</span>
+                    <span class="tag">#전통</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="destination-card" data-city="수원" onclick="selectDestination('수원')">
+            <div class="card-image"><img src="https://www.telltrip.com/wp-content/uploads/2025/05/Suwon-Hwaseong-Palace-1.jpg" alt="수원"></div>
+            <div class="card-content">
+                <h2 class="card-title">수원</h2>
+                <p class="card-description">유네스코 세계문화유산 화성과 수원갈비의 도시</p>
+                <div class="card-tags">
+                    <span class="tag">#화성</span>
+                    <span class="tag">#역사</span>
+                    <span class="tag">#맛집</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="destination-card" data-city="인천" onclick="selectDestination('인천')">
+            <div class="card-image"><img src="https://cdn.sanity.io/images/nxpteyfv/goguides/a6472ba3adabf59266828b4dec61ea3f88dc12e8-1600x1066.jpg" alt="인천"></div>
+            <div class="card-content">
+                <h2 class="card-title">인천</h2>
+                <p class="card-description">차이나타운과 월미도, 개항의 역사가 있는 항구 도시</p>
+                <div class="card-tags">
+                    <span class="tag">#항구</span>
+                    <span class="tag">#차이나타운</span>
+                    <span class="tag">#야경</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="{{ url_for('static', filename='js/sub2.js') }}"></script>
+{% endblock %}
