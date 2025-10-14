@@ -2,77 +2,224 @@
 
 {% block css %}
 <link rel="stylesheet" href="{{ url_for('static', filename='css/travel_detail.css') }}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 {% endblock %}
 
 {% block content %}
 {% if tour %}
-    <div class="title middle">
-        <!-- 여행지명 -->
-        <h1 class="place">{{tour.place}}</h1>
-
-        <!-- 지역 -->
-        <h1 class="location">{{tour.location}}</h1>
+<!-- 히어로 섹션 -->
+<section class="hero-section">
+    <img src="{{ url_for('static', filename=tour.image_path) }}" alt="이미지" class="hero-bg">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+        <div class="hero-tag">Adventure Experience</div>
+        <h1 class="hero-title">{{tour.place}}</h1>
+        <div class="hero-location">
+            <i class="fas fa-map-marker-alt"></i>
+            {{tour.location}}
+        </div>
     </div>
+</section>
 
-    <!-- 여행지 사진 -->
-    <div class="travel-img middle">
-        <img src="{{ url_for('static', filename=tour.image_path) }}" alt="상세사진">
-    </div>
-
-    <!-- 여행지 세부정보 -->
-    <div class="travel-detail middle">
-        <h2>상세설명</h2>
-        <hr>
-        <!-- 여행지 설명 -->
-        <P class="travel-content">{{tour.content}}</P>
-        <button>맛집추천</button>
-        <button>여행코스</button>
-    </div>
-{% endif %}
-
-<!--리뷰등록-->
-<div class="Review_create middle">
-    <h2>리뷰</h2>
-    <form action="{{ url_for('review.create', tour_id=tour.id) }}" method="post">
-        {{ form.csrf_token }}
-        <textarea class="Revview_create_text" name="content" id="content" rows="5"
-        {% if not g.user %}disabled{% endif %} ></textarea>
-        <button type="submit"
-        {% if not g.user %}disabled{% endif %} >답변등록</button>
-    </form>
-</div>
-
-<!--리뷰목록-->
-<div class="Review_List">
-    <h3>{{ tour.review_set|length }}개의 리뷰가 있습니다.</h3>
-    {% for review in tour.review_set %}
-    <div class="Review">
-        <div class="Review_content_box">
-            <div style="width: 800px;">{{ review.content }}</div>
-            <div style="width: 130px;">
-                {% if review.modify_date %}
-                <div>
-                    <p>작성자 : {{ review.user.username  }}</p>
-                    <p><s>{{ review.create_date.strftime('%Y-%m-%d %H:%M') }}</s></p> 
-                    <p>{{ review.modify_date.strftime('%Y-%m-%d %H:%M') }}</p>
-                </div>
-                {% else %}
-                    <div>
-                        <p>작성자 : {{ review.user.username  }}</p>
-                        <p>{{ review.create_date.strftime('%Y-%m-%d %H:%M') }}</p>
-                    </div>
-                {% endif %}
+<!-- 메인 컨텐츠 -->
+<div class="main-content">
+    <div class="container">
+        <!-- 정보 카드 -->
+        <div class="info-cards">
+            <div class="info-card">
+                <span class="info-icon"><i class="fa-solid fa-clock"></i></span>
+                <div class="info-label">소요시간</div>
+                <div class="info-value">{{tour.time}}</div>
+            </div>
+            <div class="info-card">
+                <span class="info-icon"><i class="fa-solid fa-coins"></i></span>
+                <div class="info-label">평균비용</div>
+                <div class="info-value">{{tour.price}}</div>
+            </div>
+            <div class="info-card">
+                <span class="info-icon"><i class="fa-solid fa-star"></i></span>
+                <div class="info-label">평점</div>
+                <div class="info-value">{{tour.rating}}/5.0</div>
+            </div>
+            <div class="info-card">
+                <span class="info-icon"><i class="fa-solid fa-user-group"></i></span>
+                <div class="info-label">난이도</div>
+                <div class="info-value">{{tour.level}}</div>
             </div>
         </div>
-        <div class="Review_btnbox">
-            {% if g.user == review.user %}
-            <a class="Review_modify" href="{{ url_for('review.modify', review_id=review.id) }}">수정</a>
-            <button class="delete" data-uri="{{ url_for('review.delete', review_id=review.id) }}">삭제</button>
-            {% endif %}
+
+        <!-- 상세 설명 -->
+        <div class="detail-section">
+            <div class="detail-content">
+                <h2>하늘을 나는<br>특별한 경험</h2>
+                <p>심장이 두근거리는 짜릿한 순간! 하늘을 나는 기분을 온몸으로 느낄 수 있는 패러글라이딩 체험. 단양에서만 만날 수 있는 특별한 스릴과 환상적인 뷰를 동시에 즐겨보세요.</p>
+                <p>전문 강사와 함께하는 안전한 비행으로 누구나 쉽게 도전할 수 있습니다. 비행 중 단양의 아름다운 산과 계곡, 남한강의 절경을 한눈에 담을 수 있습니다.</p>
+
+                <div class="highlight-box">
+                    <h3>▶ 추천 포인트</h3>
+                    <p>전문 강사와 함께 안전하게 진행돼 초보자도 부담 없이 즐길 수 있고,<br>비행 영상까지 포함돼 한 번의 체험으로 추억과 스릴을 모두 챙길 수 있어요.</p>
+                </div>
+            </div>
+
+
+            <!-- 특징 리스트 -->
+            <div class="features-list">
+                <div class="feature-item">
+                    <div class="feature-icon"><i class="fa-solid fa-plane"></i></div>
+                    <div class="feature-text">전문 강사 1:1 탠덤 비행</div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon"><i class="fa-solid fa-camera"></i></div>
+                    <div class="feature-text">비행 영상 촬영 서비스</div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon"><i class="fa-solid fa-box-open"></i></div>
+                    <div class="feature-text">모든 장비 무료 제공</div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon"><i class="fa-solid fa-shield-heart"></i></div>
+                    <div class="feature-text">안전 교육 및 보험 가입</div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon"><i class="fa-solid fa-mountain-sun"></i></div>
+                    <div class="feature-text">최고의 전망 비행 코스</div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon"><i class="fa-solid fa-people-group"></i></div>
+                    <div class="feature-text">가족 단위 체험 가능</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 가격 정보 섹션 -->
+        <div class="price-section">
+            <h2>주요 가격대 및 코스</h2>
+            <ul class="price-list">
+                <li><strong>기본/노멀 코스:</strong> 8만 원대부터 시작하며, 기본적인 체험을 제공합니다.</li>
+                <li><strong>익스트림/아트 코스:</strong> 12만 원 이상으로, 더 긴 시간 비행하거나 특별한 연출이 포함됩니다.</li>
+                <li><strong>VIP 코스:</strong> 20만 원대 이상으로, 더 긴 비행 시간과 추가적인 서비스를 제공하는 고급 코스입니다.</li>
+                <li><strong>특별 코스:</strong> 커플을 위한 프로포즈 비행 등 2인 기준으로 30만 원 이상 하는 고가 코스도 있습니다.</li>
+            </ul>
+
+            <h3>▶ 가격에 영향을 주는 요소</h3>
+            <ul class="price-factors">
+                <li>비행 종류 및 시간: 비행시간이 길수록 가격이 높아집니다.</li>
+                <li>동영상 촬영: 고프로 등의 영상 촬영 서비스가 포함되거나 추가 비용이 발생할 수 있습니다.</li>
+                <li>픽업 서비스: 단양역, 시외버스터미널 등에서 왕복 픽업 서비스가 포함되는 경우도 있습니다.</li>
+                <li>숙박 포함: 일부 패키지 상품은 숙박과 연계하여 제공되기도 합니다.</li>
+            </ul>
+
+            <h3>▶ 가격 확인 방법</h3>
+            <ul class="price-check">
+                <li>패러글라이딩 업체 홈페이지: 각 업체의 공식 홈페이지에서 코스별 요금을 확인할 수 있습니다.</li>
+                <li>체험 예약 플랫폼: 마이리얼트립, 투어비스 등에서 다양한 업체의 가격 비교 및 예약이 가능합니다.</li>
+                <li>블로그 및 후기: 다른 이용객들의 후기를 통해 실제 가격과 포함 내역을 확인할 수 있습니다.</li>
+            </ul>
+        </div>
+
+
+        <!-- 갤러리 -->
+        <div class="gallery-section">
+            <h2 class="section-title">생생한 현장 사진</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="https://cdn.tourtoctoc.com/news/photo/202403/4200_25926_3714.png" alt="패러글라이딩">
+                    <div class="gallery-overlay">
+                        <h3>하늘 위의 자유</h3>
+                        <p>구름 위를 나는 짜릿한 순간</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://res.cloudinary.com/kyte/image/upload/w_936,q_auto,f_auto,e_sharpen:50/content/square_lab/KR/danyang_1"
+                        alt="단양 풍경">
+                    <div class="gallery-overlay">
+                        <h3>단양의 절경</h3>
+                        <p>하늘에서 보는 아름다운 산악</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://cdn.imweb.me/upload/S201901165c3eac99c7be4/375aaf4cdc038.jpeg" alt="비행 장면">
+                    <div class="gallery-overlay">
+                        <h3>평화로운 비행</h3>
+                        <p>잊지 못할 추억을 만들어보세요</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://d2mgzmtdeipcjp.cloudfront.net/files/good/2024/06/19/17187777969704.jpg"
+                        alt="자연 풍경">
+                    <div class="gallery-overlay">
+                        <h3>자연과의 조화</h3>
+                        <p>푸른 하늘과 맑은 공기</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <!-- CTA 섹션 -->
+        <div class="cta-section">
+            <h2>더 많은 {{tour.location}} 지역의 여행 정보가 궁금하다면?</h2>
+            <p>{{tour.place}} 여행과 함께 즐길 수 있는 {{tour.location}} 지역의 맛집과 여행 코스를 확인해보세요!</p>
+            <div class="cta-buttons">
+                <button class="btn btn-white">
+                    <i class="fas fa-utensils"></i>
+                    <span>맛집 추천</span>
+                </button>
+                <button class="btn btn-outline">
+                    <i class="fas fa-route"></i>
+                    <span>여행 코스</span>
+                </button>
+            </div>
+        </div>
+
+
+        <!--리뷰등록-->
+        <div class="Review_create">
+            <h2>리뷰</h2>
+            <form action="{{ url_for('review.create', tour_id=tour.id) }}" method="post">
+                {{ form.csrf_token }}
+                <textarea class="Revview_create_text" name="content" id="content" rows="5" {% if not g.user %}disabled{%
+                    endif %}></textarea>
+                <button type="submit" {% if not g.user %}disabled{% endif %}>답변등록</button>
+            </form>
+        </div>
+
+        <!--리뷰목록-->
+        <div class="Review_List">
+            <h3>{{ tour.review_set|length }}개의 리뷰가 있습니다.</h3>
+            {% for review in tour.review_set %}
+            <div class="Review">
+                <div class="Review_content_box">
+                    <div style="width: 800px;">{{ review.content }}</div>
+                    <div style="width: 130px;">
+                        {% if review.modify_date %}
+                        <div>
+                            <p>작성자 : {{ review.user.username }}</p>
+                            <p><s>{{ review.create_date.strftime('%Y-%m-%d %H:%M') }}</s></p>
+                            <p>{{ review.modify_date.strftime('%Y-%m-%d %H:%M') }}</p>
+                        </div>
+                        {% else %}
+                        <div>
+                            <p>작성자 : {{ review.user.username }}</p>
+                            <p>{{ review.create_date.strftime('%Y-%m-%d %H:%M') }}</p>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="Review_btnbox">
+                    {% if g.user == review.user %}
+                    <a class="Review_modify" href="{{ url_for('review.modify', review_id=review.id) }}">수정</a>
+                    <button class="delete" data-uri="{{ url_for('review.delete', review_id=review.id) }}">삭제</button>
+                    {% endif %}
+                </div>
+            </div>
+            {% endfor %}
         </div>
     </div>
-    {% endfor %}
 </div>
+{% endif %}
+
 {% endblock %}
 
 <!-- 리뷰 삭제버튼 활성화를 위한 비동기 처리 -->

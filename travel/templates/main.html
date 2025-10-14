@@ -8,45 +8,106 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
 
-
 <!-- css/ -->
 <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 {% endblock %}
 
 {% block content %}
-
-
 <!-- 슬라이더 들어갈 부분-->
 <div id="slider">
     <div class="swiper mySwiper">
         <div class="swiper-wrapper">
-        <div class="swiper-slide">
-            <img src="../static/img/slide1.jpg"  alt="slide1">
+            <div class="swiper-slide">
+                <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200&h=465&fit=crop"
+                    alt="Mountain View">
+                <div class="slide-content">
+                    <div class="slide-title">Mountain Peaks</div>
+                    <div class="slide-description">탁 트인 자연 속에서 새로운 영감을 발견하세요. 세계 최고의 등반 명소에서 당신만의 모험을 시작하세요.</div>
+                    <a href="#">
+                        <button class="slide-cta">
+                            여행 시작하기
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+                    </a>
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <img src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=1200&h=465&fit=crop"
+                    alt="Forest Path">
+                <div class="slide-content">
+                    <div class="slide-title">Forest Retreat</div>
+                    <div class="slide-description">고요한 숲길을 따라 평화로운 순간을 만나보세요. 자연이 선사하는 힐링의 시간을 경험하세요.</div>
+                    <a href="#">
+                        <button class="slide-cta">
+                            여행 시작하기
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+                    </a>
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1200&h=465&fit=crop"
+                    alt="Ocean Waves">
+                <div class="slide-content">
+                    <div class="slide-title">Endless Blue</div>
+                    <div class="slide-description">푸른 바다가 선사하는 자유로움을 느껴보세요. 완벽한 해변 휴양지에서 특별한 추억을 만드세요.</div>
+                    <a href="#">
+                        <button class="slide-cta">
+                            여행 시작하기
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+                    </a>
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <img src="https://images.unsplash.com/photo-1495616811223-4d98c6e9c869?w=1200&h=465&fit=crop"
+                    alt="Sunset Sky">
+                <div class="slide-content">
+                    <div class="slide-title">Golden Hour</div>
+                    <div class="slide-description">황금빛 석양이 물들이는 하늘의 황홀한 순간. 세계에서 가장 아름다운 석양을 감상하세요.</div>
+                    <a href="#">
+                        <button class="slide-cta">
+                            여행 시작하기
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+                    </a>
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <img src="https://images.unsplash.com/photo-1419242902214-272b3f66ee7a?w=1200&h=465&fit=crop"
+                    alt="Starry Night">
+                <div class="slide-content">
+                    <div class="slide-title">Starry Dreams</div>
+                    <div class="slide-description">별이 빛나는 밤, 꿈같은 순간을 경험하세요. 도심을 벗어나 은하수 아래에서의 특별한 밤을 보내세요.</div>
+                    <a href="#">
+                        <button class="slide-cta">
+                            여행 시작하기
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+                    </a>
+                </div>
+            </div>
         </div>
-        <div class="swiper-slide">
-            <img src="../static/img/slide2.jpg"  alt="slide1">
+
+        <div class="custom-pagination">
+            <div class="pagination-bullet active" data-index="0"></div>
+            <div class="pagination-bullet" data-index="1"></div>
+            <div class="pagination-bullet" data-index="2"></div>
+            <div class="pagination-bullet" data-index="3"></div>
+            <div class="pagination-bullet" data-index="4"></div>
         </div>
-        <div class="swiper-slide">
-            <img src="../static/img/slide3.jpg"  alt="slide1">
-        </div>
-        <div class="swiper-slide">
-            <img src="../static/img/slide4.jpg"  alt="slide1">
-        </div>
-        <div class="swiper-slide">
-            <img src="../static/img/slide5.jpg"  alt="slide1">
-        </div>
-        </div>
+
         <div class="slide_button">
-            <div id="buttonRight">
+            <div class="nav-button" id="buttonPrev">
                 <i class="fa-solid fa-chevron-up"></i>
             </div>
-            <div id="buttonLeft">
+            <div class="nav-button" id="buttonNext">
                 <i class="fa-solid fa-chevron-down"></i>
             </div>
         </div>
+
     </div>
 </div>
-
 <!-- 여행지 추천 1 -->
 <div class="travel_box">
             <span class="four_cut">
@@ -258,14 +319,91 @@
 </div>
 
 <!--게시판-->
-<div class="N">
-    <div class="M"></div>
+<div class="container3 my-3">
+    <table class="table table-hover">
+        <thead>
+            <tr class="table-dark">
+                <th>번호</th>
+                <th>제목</th>
+                <th>글쓴이</th>
+                <th>작성일시</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% if notice_list %}
+            {% for notice in notice_list.items %}
+            <tr>
+                <td>{{ notice_list.total - (notice_list.page - 1) * notice_list.per_page - loop.index0 }}</td>
+                <td><a href="{{ url_for('notice.detail', notice_id=notice.id) }}">{{ notice.subject }}</a>
+                    {% if notice.comment_set|length > 0 %}
+                    <span class="text-danger small mx-2">[{{ notice.comment_set|length }}]</span>
+                    {% endif %}
+                </td>
+                <td>{{ notice.user.username }}</td>
+                <td>{{ notice.create_date.strftime('%Y-%m-%d %H:%M') }}</td>
+            </tr>
+            {% endfor %}
+            {% else %}
+            <tr>
+                <td colspan="3">질문이 없습니다.</td>
+            </tr>
+            {% endif %}
+        </tbody>
+    </table>
+
+    <!--페이징 처리-->
+    <div class="page">
+        <ul class="pagination justify-content-center">
+            <!--이전버튼-->
+            {% if notice_list.has_prev %}
+            <li class="page-item"><a data-page="{{ notice_list.prev_num }}" href="javascript:void(0)"
+                    class="page-link">이전</a></li>
+            {% else %}
+            <li class="page-item disabled"><a href="javascript:void(0)" class="page-link">이전</a></li>
+            {% endif %}
+
+            <!--페이지 번호-->
+            {% for page_num in notice_list.iter_pages() %}
+            {% if page_num %}
+            {% if page_num != notice_list.page %}
+            <li class="page-item"><a class="page-link" data-page="{{ page_num }}" href="javascript:void(0)">{{ page_num
+                    }}</a></li>
+            {%else%}
+            <li class="page-item active">
+                <a class="page-link" href="javascript:void(0)" aria-current="page">{{ page_num }}</a>
+            </li>
+            {% endif %}
+            {% else %}
+            <li class="page-item disabled"><a class="page-link" href="javascript:void(0)">...</a></li>
+            {% endif %}
+            {% endfor %}
+
+            <!--다음버튼-->
+            {% if notice_list.has_next %}
+            <li class="page-item"><a data-page="{{ notice_list.next_num }}" href="javascript:void(0)"
+                    class="page-link">다음</a></li>
+            {% else %}
+            <li class="page-item disabled"><a href="javascript:void(0)" class="page-link">다음</a></li>
+            {% endif %}
+        </ul>
+    </div>
+    <div class="container4">
+        <a href="{{ url_for('notice.create') }}" class="btn btn-primary">질문 등록하기</a>
+    </div>
+
+
+    <form action="{{ url_for('main.index') }}" method="get" id="searchForm">
+        <input type="hidden" name="page" id="page" value="{{ notice_list.page }}">
+    </form>
+
+
 </div>
 {% endblock %}
 
 {% block script %}
 <!-- slider -->
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script src="cdnjs.cloudflare.com/ajax/libs/Swiper/8.4.7/swiper-bundle.min.js"></script>
 <!--아이콘 cdn-->
 <script src="https://kit.fontawesome.com/27fd60e7f1.js" crossorigin="anonymous"></script>
 <!--JS-->

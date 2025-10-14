@@ -1,32 +1,448 @@
 @charset "utf-8";
+@import url('https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700;800;900&display=swap');
 
-/* 가운데 정렬 */
-.middle {margin:20px auto 0;}
+/* 공통 스타일 */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+    font-family: 'Pretendard', sans-serif;
+    overflow-x: hidden;
+}
 
-/* 타이틀 */
-.title {width: 1200px; height: 100px; text-align: center;}
-.place {font-size: 40px; margin-bottom: 10px;}
-.location {font-size: 25px; color: gray;}
+/* 히어로 섹션 */
+.hero-section {
+    position: relative;
+    height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
 
-/* 이미지 */
-.travel-img {width: 800px; height: 500px;}
-.travel-img img {width: 100%; height:100%;}
+.hero-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    filter: brightness(0.7);
+    object-fit: cover;
+    animation: slowZoom 25s ease-in-out infinite alternate;
+}
 
-/* 세부설명 */
-.travel-detail {width: 1000px; height: 200px;}
-.travel-detail h2{padding: 10px 0 10px; border-bottom: 1px solid;}
-.travel-content {font-size: 20px; margin-top: 10px;}
-.travel-detail button {width: 80px; height: 30px; font-size: 15px; margin: 10px;}
+@keyframes slowZoom {
+    0% { transform: scale(1); }
+    100% { transform: scale(1.08); }
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(0,0,0,0.7) 0%, rgba(102, 126, 234, 0.3) 100%);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    max-width: 1000px;
+    padding: 0 20px;
+    animation: fadeInUp 1.2s ease-out;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.hero-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 28px;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 50px;
+    font-size: 14px;
+    font-weight: 700;
+    color: #667eea;
+    margin-bottom: 30px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+    animation: fadeInUp 1.2s ease-out 0.2s both;
+}
+
+.hero-title {
+    font-size: 90px;
+    font-weight: 900;
+    line-height: 1.1;
+    margin-bottom: 25px;
+    letter-spacing: -3px;
+    color: white;
+    text-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    animation: fadeInUp 1.2s ease-out 0.4s both;
+}
+
+.hero-location {
+    font-size: 26px;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.95);
+    margin-bottom: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    animation: fadeInUp 1.2s ease-out 0.6s both;
+}
+
+
+/* 메인 컨텐츠 */
+.main-content {
+    background: #fafafa;
+    position: relative;
+    z-index: 3;
+    margin-top: -60px;
+    border-radius: 40px 40px 0 0;
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 80px 40px;
+}
+
+/* 정보 카드 섹션 */
+.info-cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+    margin-bottom: 80px;
+    margin-top: -100px;
+}
+
+.info-card {
+    background: white;
+    padding: 35px 30px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 2px solid transparent;
+}
+
+.info-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 60px rgba(102, 126, 234, 0.2);
+    border-color: #667eea;
+}
+
+.info-icon {
+    font-size: 48px;
+    margin-bottom: 15px;
+    display: block;
+}
+
+.info-label {
+    font-size: 14px;
+    color: #718096;
+    font-weight: 500;
+    margin-bottom: 8px;
+}
+
+.info-value {
+    font-size: 28px;
+    font-weight: 800;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* 상세 설명 섹션 */
+.detail-section {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 60px;
+    margin-bottom: 80px;
+}
+
+.detail-content h2 {
+    font-size: 48px;
+    font-weight: 900;
+    margin-bottom: 25px;
+    letter-spacing: -2px;
+    color: #1a202c;
+}
+
+.detail-content p {
+    font-size: 19px;
+    line-height: 1.9;
+    color: #4a5568;
+    margin-bottom: 35px;
+}
+
+.highlight-box {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding: 35px;
+    border-radius: 20px;
+    color: white;
+    margin-bottom: 35px;
+}
+
+.highlight-box h3 {
+    font-size: 22px;
+    font-weight: 800;
+    margin-bottom: 12px;
+}
+
+.highlight-box p {
+    font-size: 16px;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.95);
+    margin: 0;
+}
+
+.features-list {
+    display: grid;
+    gap: 15px;
+}
+
+.feature-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+}
+
+.feature-item:hover {
+    transform: translateX(10px);
+    box-shadow: 0 6px 25px rgba(102, 126, 234, 0.15);
+}
+
+.feature-icon {
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    color: white;
+    flex-shrink: 0;
+}
+
+.feature-text {
+    font-size: 16px;
+    font-weight: 600;
+    color: #2d3748;
+}
+
+/* 이미지 갤러리 */
+.gallery-section {
+    margin-bottom: 80px;
+}
+
+.section-title {
+    font-size: 42px;
+    font-weight: 900;
+    text-align: center;
+    margin-bottom: 50px;
+    color: #1a202c;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+}
+
+.gallery-item {
+    position: relative;
+    height: 400px;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.gallery-item:hover img {
+    transform: scale(1.1);
+}
+
+.gallery-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 30px;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, transparent 100%);
+    color: white;
+    transform: translateY(100%);
+    transition: transform 0.4s ease;
+}
+
+.gallery-item:hover .gallery-overlay {
+    transform: translateY(0);
+}
+
+.gallery-overlay h3 {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.gallery-overlay p {
+    font-size: 14px;
+    opacity: 0.9;
+}
+
+/* 가격 정보 섹션 */
+.price-section {
+    background: white;
+    border-radius: 20px;
+    padding: 50px 60px;
+    margin-bottom: 80px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
+}
+
+.price-section h2 {
+    font-size: 38px;
+    font-weight: 900;
+    color: #1a202c;
+    margin-bottom: 25px;
+    border-left: 6px solid #667eea;
+    padding-left: 15px;
+}
+
+.price-section h3 {
+    font-size: 22px;
+    font-weight: 700;
+    color: #4a5568;
+    margin-top: 40px;
+    margin-bottom: 15px;
+}
+
+.price-list, .price-factors, .price-check {
+    list-style: none;
+    padding-left: 0;
+    line-height: 1.8;
+    color: #2d3748;
+}
+
+.price-list li, .price-factors li, .price-check li {
+    margin-bottom: 10px;
+    position: relative;
+    padding-left: 20px;
+}
+
+.price-list li::before,
+.price-factors li::before,
+.price-check li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: #667eea;
+    font-weight: bold;
+}
+
+.price-section strong {
+    color: #4c51bf;
+}
+
+/* CTA 섹션 */
+.cta-section {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding: 80px 60px;
+    border-radius: 30px;
+    text-align: center;
+    color: white;
+    margin-bottom: 80px;
+}
+
+.cta-section h2 {
+    font-size: 42px;
+    font-weight: 900;
+    margin-bottom: 20px;
+}
+
+.cta-section p {
+    font-size: 19px;
+    margin-bottom: 40px;
+    opacity: 0.95;
+}
+
+.cta-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.btn {
+    padding: 18px 45px;
+    font-size: 17px;
+    font-weight: 700;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    font-family: 'Pretendard', sans-serif;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.btn-white {
+    background: white;
+    color: #667eea;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.btn-white:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+}
+
+.btn-outline {
+    background: transparent;
+    color: white;
+    border: 2px solid white;
+}
+
+.btn-outline:hover {
+    background: white;
+    color: #667eea;
+    transform: translateY(-4px);
+}
+
 
 
 /* 리뷰/댓글 등록 */
-.Review_create {width: 1000px; height: 160px; padding: 5px;margin-top: 0;}
-.Revview_create_text {width: 930px; height: 90px; padding: 10px; font-size: 15px;}
+.Review_create {width: 100%; height: 160px; padding: 5px;margin:0 auto;}
+.Revview_create_text {width: 100%; height: 90px; padding: 10px; font-size: 15px;}
 
-.Review_List {width: 1000px; margin:0 auto;}
-.Review {width: 1000px; margin:5px auto; background-color: rgba(236, 236, 236, 0.938); border: 1px solid black; border-radius: 5px;}
-.Review_content_box {width: 1000px; margin:0 auto;  padding:15px; display:flex; justify-content: space-between; align-items: center;}
+.Review_List {width: 100%; margin:10px auto 0px;}
+.Review {width: 100%; margin:5px auto; background-color: rgba(255, 255, 255, 0.938); border: 1px solid black; border-radius: 5px;}
+.Review_content_box {width: 100%; margin:0 auto;  padding:15px; display:flex; justify-content: space-between; align-items: center;}
 
-.Review_btnbox {width: 1000px; height:30px; padding: 5px;}
+.Review_btnbox {width: 100%; height:30px; padding: 5px;}
 .Review_modify {display: inline-block; font-size: 13.5px; font-weight: 400; color: black; background-color: #f0f0f0; border: 1px solid rgba(0, 0, 0, 0.527); border-radius: 3px; cursor:pointer;}
 .delete {background-color: rgba(255, 0, 0, 0.5); color: white; border: 1px solid black; border-radius: 3px;}

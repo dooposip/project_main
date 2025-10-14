@@ -31,9 +31,18 @@
             <button type="button" class="season-btn" data-value="여름">여름</button>
             <button type="button" class="season-btn" data-value="가을">가을</button>
             <button type="button" class="season-btn" data-value="겨울">겨울</button>
-
             <!-- 선택된 계절들을 담는 hidden input -->
             <input type="hidden" name="season" id="season-input">
+        </div>
+        <div class="mb-3">
+            <label for="time">평균 소요시간</label>
+            <input type="text" name="time" id="time" class="form-control" value="{{ form.time.data or '' }}">
+            <label for="price">평균 금액</label>
+            <input type="text" name="price" id="price" class="form-control" value="{{ form.price.data or '' }}">
+            <label for="rating">평균 평점</label>
+            <input type="text" name="rating" id="rating" class="form-control" value="{{ form.rating.data or '' }}">
+            <label for="level">난이도</label>
+            <input type="text" name="level" id="level" class="form-control" value="{{ form.level.data or '' }}">
         </div>
         <div class="mb-3">
             <label for="content">설명</label>

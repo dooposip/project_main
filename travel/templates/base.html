@@ -52,29 +52,64 @@
     <!-- footer -->
     <footer class="footer">
         <div class="footer_inner">
-            <!-- 로고/사이트명 -->
-            <div class="footer_logo">
-                <img src="{{ url_for('static', filename='img/logo.png') }}" alt="6way">
+            <!-- 상단영역: 로고 + 3열 메뉴 -->
+            <div class="footer_top">
+                <!-- 로고/브랜드 소개 -->
+                <div class="footer_logo_box">
+                    <div class="footer_logo">
+                        <img src="{{ url_for('static', filename='img/logo.png') }}" alt="6way">
+                    </div>
+                    <p class="footer_desc">
+                        여행의 시작, 6way <br>
+                        당신만의 길을 찾아주는 맞춤형 여행 플랫폼입니다.
+                    </p>
+                </div>
+    
+                <!-- 이용안내 -->
+                <div class="footer_column">
+                    <h3>이용안내</h3>
+                    <ul>
+                        <li><a href="#">회사소개</a></li>
+                        <li><a href="#">서비스 소개</a></li>
+                        <li><a href="#">이용약관</a></li>
+                        <li><a href="#">개인정보처리방침</a></li>
+                    </ul>
+                </div>
+    
+                <!-- 고객지원 -->
+                <div class="footer_column">
+                    <h3>고객지원</h3>
+                    <ul>
+                        <li><a href="#">공지사항</a></li>
+                        <li><a href="#">자주 묻는 질문(FAQ)</a></li>
+                        <li><a href="#">1:1 문의</a></li>
+                        <li><a href="#">여행 파트너 신청</a></li>
+                    </ul>
+                </div>
+    
+                <!-- SNS -->
+                <div class="footer_column">
+                    <h3>Follow Us</h3>
+                    <ul class="sns_links">
+                        <li><a href="#"><i class="fa-brands fa-instagram"></i> Instagram</a></li>
+                        <li><a href="#"><i class="fa-brands fa-facebook"></i> Facebook</a></li>
+                        <li><a href="#"><i class="fa-brands fa-youtube"></i> YouTube</a></li>
+                    </ul>
+                </div>
             </div>
-
-            <!-- 메뉴 링크 -->
-            <ul class="footer_menu">
-            <li><a href="#">회사소개</a></li>
-            <li><a href="#">이용약관</a></li>
-            <li><a href="#">개인정보처리방침</a></li>
-            <li><a href="#">고객센터</a></li>
-            </ul>
-
-            <!-- 연락처/고객센터 -->
-            <div class="footer_info">
-            <p>고객센터: 1234-5678</p>
-            <p>Email: 6qlxm@6qlxm.com</p>
-            <p>주소: 서울특별시 어딘가 123</p>
-            </div>
-
-            <!-- 저작권 -->
-            <div class="footer_copy">
-            <p>© 2025 6way. All Rights Reserved.</p>
+    
+            <hr class="footer_line">
+    
+            <!-- 하단영역 -->
+            <div class="footer_bottom">
+                <div class="footer_info">
+                    <p>고객센터: 1234-5678 (평일 09:00 ~ 18:00)</p>
+                    <p>Email: 6qlxm@6way.com</p>
+                    <p>주소: 서울특별시 마포구 합정동 6way로 123</p>
+                </div>
+                <div class="footer_copy">
+                    <p>© 2025 6way Corp. All Rights Reserved.</p>
+                </div>
             </div>
         </div>
     </footer>

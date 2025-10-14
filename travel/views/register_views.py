@@ -41,8 +41,15 @@ def create():
             place=form.place.data,
             location=form.location.data,
             season=seasons,
-            content=form.content.data)
+            content=form.content.data,
+            time=form.time.data,
+            price=form.price.data,
+            rating=form.rating.data,
+            level=form.level.data
+            )
+        
         db.session.add(tour)
         db.session.commit()
+
         return redirect(url_for('main.index'))
     return render_template('admin/register_form.html', form=form)

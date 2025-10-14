@@ -62,6 +62,11 @@ class Tour(db.Model):
     location = db.Column(db.String(200), nullable=False)                  # 위치 / 필수입력
     season = db.Column(db.String(100), nullable=False)                    # 계절 / 필수입력
     content = db.Column(db.Text(), nullable=False)                        # 여행지 설명 / 필수입력
+    time = db.Column(db.String(150), nullable=False)                     # 관광지명 / 필수입력
+    price = db.Column(db.String(150), nullable=False)                     # 관광지명 / 필수입력
+    rating = db.Column(db.String(150), nullable=False)                     # 관광지명 / 필수입력
+    level = db.Column(db.String(150), nullable=False)                     # 관광지명 / 필수입력
+    
 
 # 리뷰 모델 생성
 class Review(db.Model):

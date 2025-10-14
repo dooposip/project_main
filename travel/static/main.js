@@ -1,19 +1,47 @@
 //슬라이더
-var swiper = new Swiper(".mySwiper", {
-  loop:true,
+const swiper = new Swiper('.mySwiper', {
+  direction: 'vertical',
+  loop: true,
+  speed: 1000,
   autoplay: {
-      delay: 3000,
-      disableOnInteraction: false,
+    delay: 4000,
+    disableOnInteraction: false,
   },
-  navigation: {
-    nextEl: "#buttonRight",
-    prevEl: "#buttonLeft",
-  },
+  effect: 'slide',
+  grabCursor: true,
+  on: {
+    slideChange: function () {
+      const realIndex = this.realIndex;
+      const currentNum = document.querySelector('.slide-counter .current');
+      if (currentNum) {
+        currentNum.textContent = String(realIndex + 1).padStart(2, '0');
+      }
+
+      document.querySelectorAll('.pagination-bullet').forEach((bullet, idx) => {
+        bullet.classList.toggle('active', idx === realIndex);
+      });
+    }
+  }
+});
+
+document.getElementById('buttonPrev').addEventListener('click', () => {
+  swiper.slidePrev();
+});
+
+document.getElementById('buttonNext').addEventListener('click', () => {
+  swiper.slideNext();
+});
+
+document.querySelectorAll('.pagination-bullet').forEach((bullet, idx) => {
+  bullet.addEventListener('click', () => {
+    swiper.slideToLoop(idx);
+  });
 });
 
 var swiper2 = new Swiper(".swiper2", {
   slidesPerView: 4,
   spaceBetween: 20,
+  loop: true,
   navigation: {
     nextEl: ".custom-next2",
     prevEl: ".custom-prev2",
