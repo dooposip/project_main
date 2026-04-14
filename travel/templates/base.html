@@ -26,11 +26,9 @@
                         {% if g.user.id == 1%}
                             <li>{{ g.user.username }}</li>
                             <li><a href="{{ url_for('admin.create') }}">여행지 등록</a></li>
-                            <li><a href="#">마이페이지</a></li>
                             <li><a href="{{ url_for('auth.logout') }}">로그아웃</a></li>
                         {% else %}
                             <li>{{ g.user.username }}</li>
-                            <li><a href="#">마이페이지</a></li>
                             <li><a href="{{ url_for('auth.logout') }}">로그아웃</a></li>
                         {% endif %}
                     {% else %}

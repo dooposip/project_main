@@ -31,7 +31,7 @@ def create():
             image_file.save(file_path)
 
             # DB에 저장할 경로 (db에는 파일 저장 경로만 생성 / static 기준 상대경로)
-            image_path = f'img/{'admin'}/{filename}'
+            image_path = f'img/admin/{filename}'
 
             # ✅ season을 다중 선택으로 받아 쉼표로 join
             seasons = request.form.get('season')

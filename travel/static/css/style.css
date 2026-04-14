@@ -214,10 +214,10 @@ a {text-decoration: none; color: blue;}
 .four_cut img {width: 600px; height:400px;}
 .txt_box {width: 600px;height: 400px; align-content: center; padding: 20px;
     display: block; justify-items: center; }
-.txt_box h2 {font-size: 40px;  padding: 30px; font-family: "Lora", serif;
+.txt_box h2 {font-size: 40px;  padding: 30px 30px 10px 30px; font-family: "Lora", serif;
     font-weight:400; font-style: italic;}
-.sun {width:23%; height: 1px; margin-bottom: 10%; background-color: blue;}
-.sun2 {width:18%; height: 1px; margin-bottom: 10%; background-color: green;}
+.sun {width:23%; height: 1px; margin: 0 auto 20px; background-color: blue;}
+.sun2 {width:18%; height: 1px; margin: 0 auto 20px; background-color: green;}
 .txt_box p {font-size: 15px; margin-bottom: 30px; text-align: center; color: grey }
 
 /* /* 여행지 추천 2 */
@@ -281,13 +281,54 @@ a {text-decoration: none; color: blue;}
 .banner_box2 img {width: 200px; height: 50px;}
 
 /* 여행지 목록 */
-.Tour_list {width: 1200px; height: 730px; margin: 10px auto;}
-.Tour_list_table {width: 1200px; height: 690px;}
-.Tour_list_table tbody{text-align: center;}
-.Tour_table_id {width: 50px;}
-.Tour_table_img {width: 150px;}
-.Tour_table_content {width: 800px;}
-.Tour_table_season {width: 100px;}
+/* 여행지 목록 테이블 헤더 스타일 강화 */
+.Tour_list h2 {
+    font-size: 28px;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 25px;
+    padding-left: 10px;
+    border-left: 5px solid #0063f8;
+}
+
+.Tour_list_table {
+    width: 1200px;
+    border-collapse: separate;
+    border-spacing: 0;
+    border-radius: 10px 10px 0 0;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.Tour_list_tr th {
+    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%); /* 신뢰감을 주는 네이비 그라데이션 */
+    color: #ffffff;
+    padding: 18px 10px;
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    border-bottom: 2px solid #1a3668;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+}
+
+.Tour_list_table td {
+    padding: 15px;
+    border-bottom: 1px solid #f0f0f0;
+    background-color: #ffffff;
+    vertical-align: middle;
+    color: #444;
+}
+
+.Tour_list_table tr:hover td {
+    background-color: #f8fbff; /* 마우스 올렸을 때 은은한 강조 효과 */
+}
+
+.Tour_table_id { width: 80px; }
+.Tour_table_img { width: 200px; }
+.Tour_table_content { width: 720px; }
+.Tour_table_season { width: 200px; }
+
+.Tour_list { width: 1200px; margin: 50px auto; }
 
 
 /* 여행코스 더보기(상세페이지 넘어가는 버튼) */
